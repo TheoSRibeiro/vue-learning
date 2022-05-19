@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{ link }}">Canal</a></p>
+        <!-- diretiva v-bind para manipular a DOM-->
+        <p><a v-bind:href="link">Canal</a></p>
+        <!-- diretiva de forma reduzida -->
+        <p><a :href="link">Canal reduzido</a></p>
+        <!-- v-model atualiza todos os dados e elementos que estão apontados (nome)-->
+        <p>
+            <input type="text" v-model="nome"><br>
+            <span>{{ nome }}</span>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                link: "https:google.com",
+                nome: "Maria"
+            },
+            watch:{
+                nome(novoValor){
+                    console.log(novoValor.toUpperCase())
+                }
+            }
+        })
+    </script>
+</body>
+</html>
